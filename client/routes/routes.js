@@ -1,3 +1,4 @@
+
 var AppRouter = Backbone.Router.extend({
   routes: {
     '': 'showQuads',
@@ -9,8 +10,9 @@ var appRouter = new AppRouter()
 
 appRouter.on('route:showQuads', function(){
   $('.containerHold').html(seasonsView.render());
-})
+});
 appRouter.on('route:getSeason', function(season){
+  this.trigger('pleaseRender')
     $('body').first().removeClass().addClass(season)
     $('table').removeClass().addClass('table').addClass('table-'+season+'')
     // this.render()

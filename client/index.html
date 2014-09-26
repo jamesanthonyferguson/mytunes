@@ -7,7 +7,8 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="bower_components/require/build/require.min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="routes/routes.js"></script>
 
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <script>
@@ -40,25 +41,25 @@
       $(function(){
         // set up model objects
         var library
-        var apicall = new soundcloudAPI().fetch().success(function(data){
-            console.log(data)
-            var songArray = []
-            for (var i = 0; i < data.length; i++) {
-                var songObj = {
-                    url: data[i].uri,
-                    title: data[i].title,
-                    artist: data[i].user.username,
-                    SCid: data[i].id
-                }
-                songArray.push(songObj)
-            };
-            console.log(songArray)
-            var library = new Songs(songArray)
+        // var apicall = new soundcloudAPI().fetch().success(function(data){
+        //     console.log(data)
+        //     var songArray = []
+        //     for (var i = 0; i < data.length; i++) {
+        //         var songObj = {
+        //             url: data[i].uri,
+        //             title: data[i].title,
+        //             artist: data[i].user.username,
+        //             SCid: data[i].id
+        //         }
+        //         songArray.push(songObj)
+        //     };
+        //     console.log(songArray)
+            var library = new Songs(songData)
             app = new AppModel({library: library});
             var appView = new AppView({model: app});
             $('.containerHold').append(appView.render());
 
-        });
+        // });
         // build a view for the top level of the whole app
         // put the view onto the screen
       });
